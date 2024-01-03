@@ -1,9 +1,9 @@
 
-### Frontend Overview
-- **Admin Interface**: A dashboard for administrators to view and manage broadcast messages from the database. It allows the resending of failed broadcasts, which the broadcasting service treats as new messages rather than retries.
 
+## Overview
+The system is designed to broadcast transactions to an EVM-compatible blockchain network, ensuring reliability and efficiency. It comprises two main services - Service A (API Gateway) and Service B (Broadcasting Transaction Service), with a focus on asynchronous processing, retry mechanisms, and consistent data tracking.
 
-----
+---
 
 
 ### Backend Architecture
@@ -40,22 +40,23 @@
    -   _For retry broadcasting, there will be a need to re-sign the transaction_
 4. **Success and Failure Responses**:
    - On successful broadcast, sends a success response to Service A.
-   - On failure (after 3 attempts), sends a failure response with relevant metadata, for Service A to update the transaction details.
+   - On failure (after 3 attempts), sends a failure response through the "Response" channel with relevant metadata, for Service A to update the transaction details.
+   
 
  
 
 ### Communication Flow and Channels
-1. **Main Requests Channel**:
+1. **Request Message Channel**:
    - Facilitates new requests from Service A to B. Service B processes these requests upon receipt.
    - Retries attempts are prioritised first so that the conditions of signing are the same for example gas prices.
-2. **Main Responses Channel**:
+2. **Response Message Channel**:
    - Service B uses this channel to send back responses to Service A after processing requests.
-3. **Retry Attempts Channel**:
+3. **Retry Message Channel**:
    - Manages failed transactions requiring retries, by sending it back to the Main Request Channel
 
 ### Processing and Response Mechanism
-- **Service B Processing**: Handles requests from the Main Requests Channel.
-- **Response Transmission**: Sends responses through the Main Responses Channel.
+- **Service B Processing**: Handles requests from the Request Message Channel.
+- **Response Transmission**: Sends responses through the Response Message Channel.
 - **Service A Reception**: Receives responses, completes the request-response cycle, and updates the database.
 
 ### Database Schema (Service A)
@@ -79,6 +80,13 @@
 
 
 -----
+
+### Frontend Overview
+- **Admin Interface**: A dashboard for administrators to view and manage broadcast messages from the database.
+- It allows the resending of failed broadcasts, which the broadcasting service treats as new messages rather than retries.
+
+
+----
 
 
 ### Scenario 1: First Attempt and Success
