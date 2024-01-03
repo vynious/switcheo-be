@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cosmos Blockchain Interface</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        color: #333;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    form, #user-details, #all-users,#create-user, #update-user, #update-user-password, #all-users-by-address {
+        margin: 20px auto;
+        width: 80%;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        background: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    #user-details, #all-users, #create-user, #update-user, #update-user-password, #all-users-by-address  {
+        max-width: 100%;
+        overflow-x: auto; /* Allows horizontal scrolling if content is too wide */
+        padding: 10px;
+        border: 1px solid #ddd; /* Optional: adds a border for clarity */
+    }
+</style>
+
+<body>
+<h1>Cosmos SDK User Management</h1>
+
+<!-- Form to Create User -->
+<form hx-post="/create-user" hx-encoding="json" hx-target="#create-user">
+    <h3>Function to Create User</h3>
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <input type="text" name="address" placeholder="Address">
+    <button type="submit">Create User</button>
+</form>
+
+<div id="create-user">
+    <p>Output: </p>
+</div>
+
+<!-- Form to Update User -->
+<form hx-post="/update-user" hx-encoding="json" hx-target="#update-user">
+    <h3>Function to Update Specific User</h3>
+    <input type="number" name="id" placeholder="User ID">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="address" placeholder="Address">
+    <button type="submit">Update User</button>
+</form>
+
+<div id="update-user">
+    <p>Output: </p>
+</div>
+
+<!-- Form to Update User Password -->
+<form hx-post="/update-user-password" hx-encoding="json" hx-target="#update-user-password">
+    <h3>Function to Update Specific User's Password</h3>
+    <input type="number" name="id" placeholder="User ID">
+    <input type="password" name="currentPassword" placeholder="Current Password">
+    <input type="password" name="newPassword" placeholder="New Password">
+    <button type="submit">Update Password</button>
+</form>
+
+<div id="update-user-password">
+    <p>Output: </p>
+</div>
+
+
+<!-- Form to Get User by ID -->
+<form hx-get="/get-user" hx-target="#user-details">
+    <h3>Function to Get Specific User</h3>
+    <input type="number" name="id" placeholder="User ID">
+    <button type="submit">Get User</button>
+</form>
+
+<!-- Div to Show User Details -->
+<div id="user-details">
+    <p>Output: </p>
+</div>
+
+<!-- Button to Get All Users -->
+<form hx-get="/get-all-users" hx-target="#all-users">
+    <h3>Function to Get All User</h3>
+    <button type="submit">Get All User</button>
+</form>
+
+<!-- Div to Show All Users -->
+<div id="all-users">
+    <p>Output: </p>
+</div>
+
+<form hx-get="/get-all-users-by-address" hx-target="#all-users-by-address">
+    <h3>Function to Get All Users By Address</h3>
+    <input type="text" name="address" placeholder="Address">
+    <button type="submit">Get All User By Address</button>
+</form>
+
+<!-- Div to Show All Users -->
+<div id="all-users-by-address">
+    <p>Output: </p>
+</div>
+
+</body>
+</html>
