@@ -9004,206 +9004,6 @@ paths:
               Since: cosmos-sdk 0.47
       tags:
         - Msg
-  /crude/crude/params:
-    get:
-      summary: Parameters queries the parameters of the module.
-      operationId: CrudeCrudeQuery_Params
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              params:
-                description: params holds all the parameters of this module.
-                type: object
-            description: >-
-              QueryParamsResponse is response type for the Query/Params RPC
-              method.
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    '@type':
-                      type: string
-                  additionalProperties: {}
-      tags:
-        - Query
-  /crude/crude/user:
-    get:
-      operationId: CrudeCrudeQuery_UserAllByEmailDomain
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              User:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      format: uint64
-                    name:
-                      type: string
-                    email:
-                      type: string
-                    username:
-                      type: string
-                    password:
-                      type: string
-                    address:
-                      type: string
-                    creator:
-                      type: string
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    '@type':
-                      type: string
-                  additionalProperties: {}
-      parameters:
-        - name: pagination.key
-          description: |-
-            key is a value returned in PageResponse.next_key to begin
-            querying the next page most efficiently. Only one of offset or key
-            should be set.
-          in: query
-          required: false
-          type: string
-          format: byte
-        - name: pagination.offset
-          description: >-
-            offset is a numeric offset that can be used when key is unavailable.
-
-            It is less efficient than using key. Only one of offset or key
-            should
-
-            be set.
-          in: query
-          required: false
-          type: string
-          format: uint64
-        - name: pagination.limit
-          description: >-
-            limit is the total number of results to be returned in the result
-            page.
-
-            If left empty it will default to a value to be set by each app.
-          in: query
-          required: false
-          type: string
-          format: uint64
-        - name: pagination.count_total
-          description: >-
-            count_total is set to true  to indicate that the result set should
-            include
-
-            a count of the total number of items available for pagination in
-            UIs.
-
-            count_total is only respected when offset is used. It is ignored
-            when key
-
-            is set.
-          in: query
-          required: false
-          type: boolean
-        - name: pagination.reverse
-          description: >-
-            reverse is set to true if results are to be returned in the
-            descending order.
-
-
-            Since: cosmos-sdk 0.43
-          in: query
-          required: false
-          type: boolean
-        - name: domain
-          in: query
-          required: false
-          type: string
-      tags:
-        - Query
-  /crude/crude/user/{id}:
-    get:
-      summary: Queries a list of User items.
-      operationId: CrudeCrudeQuery_User
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              User:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    format: uint64
-                  name:
-                    type: string
-                  email:
-                    type: string
-                  username:
-                    type: string
-                  password:
-                    type: string
-                  address:
-                    type: string
-                  creator:
-                    type: string
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    '@type':
-                      type: string
-                  additionalProperties: {}
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
-          format: uint64
-      tags:
-        - Query
   /crude.crude.Msg/CreateUser:
     post:
       operationId: CrudeCrudeMsg_CreateUser
@@ -9252,6 +9052,8 @@ paths:
               password:
                 type: string
               address:
+                type: string
+              age:
                 type: string
       tags:
         - Msg
@@ -9442,6 +9244,210 @@ paths:
                 type: string
       tags:
         - Msg
+  /crude/crude/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: CrudeCrudeQuery_Params
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /crude/crude/user:
+    get:
+      operationId: CrudeCrudeQuery_UserAllByEmailDomain
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              User:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uint64
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    address:
+                      type: string
+                    creator:
+                      type: string
+                    age:
+                      type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+        - name: domain
+          in: query
+          required: false
+          type: string
+      tags:
+        - Query
+  /crude/crude/user/{id}:
+    get:
+      summary: Queries a list of User items.
+      operationId: CrudeCrudeQuery_User
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              User:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uint64
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+                  address:
+                    type: string
+                  creator:
+                    type: string
+                  age:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /ibc.applications.fee.v1.Msg/PayPacketFee:
     post:
       summary: >-
@@ -23014,6 +23020,93 @@ definitions:
           min_commission_rate is the chain-wide minimum commission rate that a
           validator can charge their delegators
     description: Params defines the parameters for the x/staking module.
+  crude.crude.MsgCreateUser:
+    type: object
+    properties:
+      creator:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      address:
+        type: string
+      age:
+        type: string
+  crude.crude.MsgCreateUserResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+  crude.crude.MsgDeleteUser:
+    type: object
+    properties:
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
+  crude.crude.MsgDeleteUserResponse:
+    type: object
+  crude.crude.MsgUpdateParams:
+    type: object
+    properties:
+      authority:
+        type: string
+        description: >-
+          authority is the address that controls the module (defaults to x/gov
+          unless overwritten).
+      params:
+        description: 'NOTE: All parameters must be supplied.'
+        type: object
+    description: MsgUpdateParams is the Msg/UpdateParams request type.
+  crude.crude.MsgUpdateParamsResponse:
+    type: object
+    description: |-
+      MsgUpdateParamsResponse defines the response structure for executing a
+      MsgUpdateParams message.
+  crude.crude.MsgUpdateUser:
+    type: object
+    properties:
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
+      name:
+        type: string
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      address:
+        type: string
+  crude.crude.MsgUpdateUserPassword:
+    type: object
+    properties:
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
+      currentPassword:
+        type: string
+      newPassword:
+        type: string
+  crude.crude.MsgUpdateUserPasswordResponse:
+    type: object
+  crude.crude.MsgUpdateUserResponse:
+    type: object
+  crude.crude.Params:
+    type: object
+    description: Params defines the parameters for the module.
   cosmos.base.query.v1beta1.PageRequest:
     type: object
     properties:
@@ -23091,9 +23184,6 @@ definitions:
                repeated Bar results = 1;
                PageResponse page = 2;
        }
-  crude.crude.Params:
-    type: object
-    description: Params defines the parameters for the module.
   crude.crude.QueryAllUserAddressResponse:
     type: object
     properties:
@@ -23116,6 +23206,8 @@ definitions:
             address:
               type: string
             creator:
+              type: string
+            age:
               type: string
   crude.crude.QueryAllUserEmailDomainResponse:
     type: object
@@ -23140,6 +23232,8 @@ definitions:
               type: string
             creator:
               type: string
+            age:
+              type: string
   crude.crude.QueryAllUserResponse:
     type: object
     properties:
@@ -23162,6 +23256,8 @@ definitions:
             address:
               type: string
             creator:
+              type: string
+            age:
               type: string
       pagination:
         type: object
@@ -23210,6 +23306,8 @@ definitions:
             type: string
           creator:
             type: string
+          age:
+            type: string
   crude.crude.QueryParamsResponse:
     type: object
     properties:
@@ -23235,88 +23333,8 @@ definitions:
         type: string
       creator:
         type: string
-  crude.crude.MsgCreateUser:
-    type: object
-    properties:
-      creator:
+      age:
         type: string
-      name:
-        type: string
-      email:
-        type: string
-      username:
-        type: string
-      password:
-        type: string
-      address:
-        type: string
-  crude.crude.MsgCreateUserResponse:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-  crude.crude.MsgDeleteUser:
-    type: object
-    properties:
-      creator:
-        type: string
-      id:
-        type: string
-        format: uint64
-  crude.crude.MsgDeleteUserResponse:
-    type: object
-  crude.crude.MsgUpdateParams:
-    type: object
-    properties:
-      authority:
-        type: string
-        description: >-
-          authority is the address that controls the module (defaults to x/gov
-          unless overwritten).
-      params:
-        description: 'NOTE: All parameters must be supplied.'
-        type: object
-    description: MsgUpdateParams is the Msg/UpdateParams request type.
-  crude.crude.MsgUpdateParamsResponse:
-    type: object
-    description: |-
-      MsgUpdateParamsResponse defines the response structure for executing a
-      MsgUpdateParams message.
-  crude.crude.MsgUpdateUser:
-    type: object
-    properties:
-      creator:
-        type: string
-      id:
-        type: string
-        format: uint64
-      name:
-        type: string
-      email:
-        type: string
-      username:
-        type: string
-      password:
-        type: string
-      address:
-        type: string
-  crude.crude.MsgUpdateUserPassword:
-    type: object
-    properties:
-      creator:
-        type: string
-      id:
-        type: string
-        format: uint64
-      currentPassword:
-        type: string
-      newPassword:
-        type: string
-  crude.crude.MsgUpdateUserPasswordResponse:
-    type: object
-  crude.crude.MsgUpdateUserResponse:
-    type: object
   ibc.applications.fee.v1.Fee:
     type: object
     properties:

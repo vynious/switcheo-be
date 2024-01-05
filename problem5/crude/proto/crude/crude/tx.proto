@@ -9,6 +9,7 @@ import "gogoproto/gogo.proto";
 import "crude/crude/params.proto";
 import "crude/crude/user.proto";
 
+
 option go_package = "crude/x/crude/types";
 
 // Msg defines the Msg service.
@@ -49,6 +50,7 @@ message MsgCreateUser {
   string username = 4;
   string password = 5;
   string address  = 6;
+  string age = 7;
 }
 
 message MsgCreateUserResponse {

@@ -2,6 +2,7 @@ syntax = "proto3";
 package crude.crude;
 
 option go_package = "crude/x/crude/types";
+import "google/protobuf/timestamp.proto";
 
 message User {
   uint64 id = 1;
@@ -11,4 +12,5 @@ message User {
   string password = 5; 
   string address = 6; 
   string creator = 7;
+  string age = 8;
 }

@@ -2,10 +2,9 @@ package keeper
 
 import (
 	"context"
-	"fmt"
-
 	errorsmod "cosmossdk.io/errors"
 	"crude/x/crude/types"
+	"fmt"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
@@ -19,7 +18,9 @@ func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (
 		Username: msg.Username,
 		Password: msg.Password,
 		Address:  msg.Address,
+		Age:      msg.Age,
 	}
+
 	id, err := k.AppendUser(
 		ctx,
 		user,
