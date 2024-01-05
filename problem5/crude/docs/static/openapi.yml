@@ -9042,7 +9042,7 @@ paths:
         - Query
   /crude/crude/user:
     get:
-      operationId: CrudeCrudeQuery_UserAllByAddress
+      operationId: CrudeCrudeQuery_UserAllByEmailDomain
       responses:
         '200':
           description: A successful response.
@@ -9144,7 +9144,7 @@ paths:
           in: query
           required: false
           type: boolean
-        - name: address
+        - name: domain
           in: query
           required: false
           type: string
@@ -23095,6 +23095,29 @@ definitions:
     type: object
     description: Params defines the parameters for the module.
   crude.crude.QueryAllUserAddressResponse:
+    type: object
+    properties:
+      User:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uint64
+            name:
+              type: string
+            email:
+              type: string
+            username:
+              type: string
+            password:
+              type: string
+            address:
+              type: string
+            creator:
+              type: string
+  crude.crude.QueryAllUserEmailDomainResponse:
     type: object
     properties:
       User:

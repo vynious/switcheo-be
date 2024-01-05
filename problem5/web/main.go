@@ -50,6 +50,8 @@ func main() {
 	http.HandleFunc("/get-user", HandleGetUser)
 	http.HandleFunc("/get-all-users", HandleGetAllUsers)
 	http.HandleFunc("/get-all-users-by-address", HandlerGetUsersByAddress)
+	http.HandleFunc("/delete-user", HandlerDeleteUserById)
+	http.HandleFunc("/get-all-users-by-email-domain", HandlerGetUsersByEmailDomain)
 
 	log.Println("Listening on http://localhost:8080...")
 	err = http.ListenAndServe(":8080", nil)
@@ -301,6 +303,81 @@ func HandlerGetUsersByAddress(w http.ResponseWriter, r *http.Request) {
 
 	queryResp, err := queryClient.UserAllByAddress(ctx, &types.QueryAllUserAddressRequest{
 		Address: address,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	json.NewEncoder(w).Encode(queryResp)
+	fmt.Fprintln(w, "Users queried successfully")
+}
+
+func HandlerDeleteUserById(w http.ResponseWriter, r *http.Request) {
+	log.Println("Received request to get delete user by id")
+
+	accountName := "alice"
+	account, err := GlobalClient.Account(accountName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	addr, err := account.Address("cosmos")
+	if err != nil {
+		log.Println("Address error")
+
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Error parsing form data", http.StatusBadRequest)
+		return
+	}
+
+	id, err := strconv.ParseUint(r.FormValue("id"), 10, 64)
+	if err != nil {
+		// Handle the error if the conversion fails
+		log.Printf("Error converting: %v", err)
+		http.Error(w, "Invalid ID format", http.StatusBadRequest)
+		return
+	}
+
+	msg := &types.MsgDeleteUser{
+		Creator: addr,
+		Id:      id,
+	}
+
+	ctx := context.Background()
+	// Broadcast the transaction
+	txResp, err := GlobalClient.BroadcastTx(ctx, account, msg)
+	if err != nil {
+		log.Printf("Broadcasting error: %v", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// Respond with the transaction response
+	//json.NewEncoder(w).Encode(txResp)
+	fmt.Println(txResp)
+	fmt.Fprintln(w, "User deleted successfully")
+}
+
+func HandlerGetUsersByEmailDomain(w http.ResponseWriter, r *http.Request) {
+	log.Println("Received request to get all users by email domain")
+
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Error parsing form data", http.StatusBadRequest)
+		return
+	}
+
+	domain := r.FormValue("domain")
+
+	ctx := context.Background()
+	// Instantiate a query client for your `user` blockchain
+	queryClient := types.NewQueryClient(GlobalClient.Context())
+
+	queryResp, err := queryClient.UserAllByEmailDomain(ctx, &types.QueryAllUserEmailDomainRequest{
+		Domain: domain,
 	})
 	if err != nil {
 		log.Fatal(err)

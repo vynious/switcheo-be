@@ -17,7 +17,7 @@
         text-align: center;
         color: #333;
     }
-    form, #user-details, #all-users,#create-user, #update-user, #update-user-password, #all-users-by-address {
+    form, #user-details, #all-users,#create-user, #update-user, #update-user-password, #all-users-by-address, #del-user-details, #all-users-by-email-domain {
         margin: 20px auto;
         width: 80%;
         padding: 20px;
@@ -47,7 +47,7 @@
     button:hover {
         background: #0056b3;
     }
-    #user-details, #all-users, #create-user, #update-user, #update-user-password, #all-users-by-address  {
+    #user-details, #all-users, #create-user, #update-user, #update-user-password, #all-users-by-address, #del-user-details, #all-users-by-email-domain  {
         max-width: 100%;
         overflow-x: auto; /* Allows horizontal scrolling if content is too wide */
         padding: 10px;
@@ -136,5 +136,27 @@
     <p>Output: </p>
 </div>
 
+<form hx-get="/get-all-users-by-email-domain" hx-target="#all-users-by-email-domain">
+    <h3>Function to Get All Users By Email Domain</h3>
+    <input type="text" name="domain" placeholder="Domain">
+    <button type="submit">Get All User By Email Domain</button>
+</form>
+
+<!-- Div to Show All Users -->
+<div id="all-users-by-email-domain">
+    <p>Output: </p>
+</div>
+
+<!-- Form to Get User by ID -->
+<form hx-post="/delete-user" hx-target="#del-user-details">
+    <h3>Function to Get Delete User</h3>
+    <input type="number" name="id" placeholder="User ID">
+    <button type="submit">Delete User</button>
+</form>
+
+<!-- Div to Show User Details -->
+<div id="del-user-details">
+    <p>Output: </p>
+</div>
 </body>
 </html>

@@ -32,6 +32,10 @@ service Query {
   rpc UserAllByAddress (QueryAllUserAddressRequest) returns (QueryAllUserAddressResponse) {
     option (google.api.http).get = "/crude/crude/user";
   }
+
+  rpc UserAllByEmailDomain (QueryAllUserEmailDomainRequest) returns (QueryAllUserEmailDomainResponse) {
+    option (google.api.http).get = "/crude/crude/user";
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -66,5 +70,14 @@ message QueryAllUserResponse {
 }
 
 message QueryAllUserAddressResponse {
+  repeated User                                   User       = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllUserEmailDomainRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+  string domain = 2;
+}
+
+message QueryAllUserEmailDomainResponse {
   repeated User                                   User       = 1 [(gogoproto.nullable) = false];
 }

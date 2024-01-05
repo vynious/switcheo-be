@@ -3647,6 +3647,999 @@ func (x *fastReflection_QueryAllUserAddressResponse) ProtoMethods() *protoiface.
 	}
 }
 
+var (
+	md_QueryAllUserEmailDomainRequest            protoreflect.MessageDescriptor
+	fd_QueryAllUserEmailDomainRequest_pagination protoreflect.FieldDescriptor
+	fd_QueryAllUserEmailDomainRequest_domain     protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_crude_crude_query_proto_init()
+	md_QueryAllUserEmailDomainRequest = File_crude_crude_query_proto.Messages().ByName("QueryAllUserEmailDomainRequest")
+	fd_QueryAllUserEmailDomainRequest_pagination = md_QueryAllUserEmailDomainRequest.Fields().ByName("pagination")
+	fd_QueryAllUserEmailDomainRequest_domain = md_QueryAllUserEmailDomainRequest.Fields().ByName("domain")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryAllUserEmailDomainRequest)(nil)
+
+type fastReflection_QueryAllUserEmailDomainRequest QueryAllUserEmailDomainRequest
+
+func (x *QueryAllUserEmailDomainRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryAllUserEmailDomainRequest)(x)
+}
+
+func (x *QueryAllUserEmailDomainRequest) slowProtoReflect() protoreflect.Message {
+	mi := &file_crude_crude_query_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryAllUserEmailDomainRequest_messageType fastReflection_QueryAllUserEmailDomainRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryAllUserEmailDomainRequest_messageType{}
+
+type fastReflection_QueryAllUserEmailDomainRequest_messageType struct{}
+
+func (x fastReflection_QueryAllUserEmailDomainRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryAllUserEmailDomainRequest)(nil)
+}
+func (x fastReflection_QueryAllUserEmailDomainRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryAllUserEmailDomainRequest)
+}
+func (x fastReflection_QueryAllUserEmailDomainRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllUserEmailDomainRequest
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllUserEmailDomainRequest
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryAllUserEmailDomainRequest_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryAllUserEmailDomainRequest)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryAllUserEmailDomainRequest)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Pagination != nil {
+		value := protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+		if !f(fd_QueryAllUserEmailDomainRequest_pagination, value) {
+			return
+		}
+	}
+	if x.Domain != "" {
+		value := protoreflect.ValueOfString(x.Domain)
+		if !f(fd_QueryAllUserEmailDomainRequest_domain, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		return x.Pagination != nil
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		return x.Domain != ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		x.Pagination = nil
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		x.Domain = ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		value := x.Pagination
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		value := x.Domain
+		return protoreflect.ValueOfString(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		x.Pagination = value.Message().Interface().(*v1beta1.PageRequest)
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		x.Domain = value.Interface().(string)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		if x.Pagination == nil {
+			x.Pagination = new(v1beta1.PageRequest)
+		}
+		return protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		panic(fmt.Errorf("field domain of message crude.crude.QueryAllUserEmailDomainRequest is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainRequest.pagination":
+		m := new(v1beta1.PageRequest)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "crude.crude.QueryAllUserEmailDomainRequest.domain":
+		return protoreflect.ValueOfString("")
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainRequest"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in crude.crude.QueryAllUserEmailDomainRequest", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryAllUserEmailDomainRequest) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainRequest)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.Pagination != nil {
+			l = options.Size(x.Pagination)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Domain)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainRequest)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.Domain) > 0 {
+			i -= len(x.Domain)
+			copy(dAtA[i:], x.Domain)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Domain)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if x.Pagination != nil {
+			encoded, err := options.Marshal(x.Pagination)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainRequest)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllUserEmailDomainRequest: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllUserEmailDomainRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Pagination == nil {
+					x.Pagination = &v1beta1.PageRequest{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Pagination); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Domain", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Domain = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var _ protoreflect.List = (*_QueryAllUserEmailDomainResponse_1_list)(nil)
+
+type _QueryAllUserEmailDomainResponse_1_list struct {
+	list *[]*User
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*User)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*User)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) AppendMutable() protoreflect.Value {
+	v := new(User)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) NewElement() protoreflect.Value {
+	v := new(User)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_QueryAllUserEmailDomainResponse_1_list) IsValid() bool {
+	return x.list != nil
+}
+
+var (
+	md_QueryAllUserEmailDomainResponse      protoreflect.MessageDescriptor
+	fd_QueryAllUserEmailDomainResponse_User protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_crude_crude_query_proto_init()
+	md_QueryAllUserEmailDomainResponse = File_crude_crude_query_proto.Messages().ByName("QueryAllUserEmailDomainResponse")
+	fd_QueryAllUserEmailDomainResponse_User = md_QueryAllUserEmailDomainResponse.Fields().ByName("User")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryAllUserEmailDomainResponse)(nil)
+
+type fastReflection_QueryAllUserEmailDomainResponse QueryAllUserEmailDomainResponse
+
+func (x *QueryAllUserEmailDomainResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryAllUserEmailDomainResponse)(x)
+}
+
+func (x *QueryAllUserEmailDomainResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_crude_crude_query_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryAllUserEmailDomainResponse_messageType fastReflection_QueryAllUserEmailDomainResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryAllUserEmailDomainResponse_messageType{}
+
+type fastReflection_QueryAllUserEmailDomainResponse_messageType struct{}
+
+func (x fastReflection_QueryAllUserEmailDomainResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryAllUserEmailDomainResponse)(nil)
+}
+func (x fastReflection_QueryAllUserEmailDomainResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryAllUserEmailDomainResponse)
+}
+func (x fastReflection_QueryAllUserEmailDomainResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllUserEmailDomainResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllUserEmailDomainResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryAllUserEmailDomainResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryAllUserEmailDomainResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryAllUserEmailDomainResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if len(x.User) != 0 {
+		value := protoreflect.ValueOfList(&_QueryAllUserEmailDomainResponse_1_list{list: &x.User})
+		if !f(fd_QueryAllUserEmailDomainResponse_User, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		return len(x.User) != 0
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		x.User = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		if len(x.User) == 0 {
+			return protoreflect.ValueOfList(&_QueryAllUserEmailDomainResponse_1_list{})
+		}
+		listValue := &_QueryAllUserEmailDomainResponse_1_list{list: &x.User}
+		return protoreflect.ValueOfList(listValue)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		lv := value.List()
+		clv := lv.(*_QueryAllUserEmailDomainResponse_1_list)
+		x.User = *clv.list
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		if x.User == nil {
+			x.User = []*User{}
+		}
+		value := &_QueryAllUserEmailDomainResponse_1_list{list: &x.User}
+		return protoreflect.ValueOfList(value)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "crude.crude.QueryAllUserEmailDomainResponse.User":
+		list := []*User{}
+		return protoreflect.ValueOfList(&_QueryAllUserEmailDomainResponse_1_list{list: &list})
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: crude.crude.QueryAllUserEmailDomainResponse"))
+		}
+		panic(fmt.Errorf("message crude.crude.QueryAllUserEmailDomainResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in crude.crude.QueryAllUserEmailDomainResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryAllUserEmailDomainResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if len(x.User) > 0 {
+			for _, e := range x.User {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.User) > 0 {
+			for iNdEx := len(x.User) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.User[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0xa
+			}
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllUserEmailDomainResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllUserEmailDomainResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllUserEmailDomainResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field User", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.User = append(x.User, &User{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.User[len(x.User)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
 // Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 // 	protoc-gen-go v1.27.0
@@ -3950,6 +4943,84 @@ func (x *QueryAllUserAddressResponse) GetUser() []*User {
 	return nil
 }
 
+type QueryAllUserEmailDomainRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pagination *v1beta1.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	Domain     string               `protobuf:"bytes,2,opt,name=domain,proto3" json:"domain,omitempty"`
+}
+
+func (x *QueryAllUserEmailDomainRequest) Reset() {
+	*x = QueryAllUserEmailDomainRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_crude_crude_query_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryAllUserEmailDomainRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryAllUserEmailDomainRequest) ProtoMessage() {}
+
+// Deprecated: Use QueryAllUserEmailDomainRequest.ProtoReflect.Descriptor instead.
+func (*QueryAllUserEmailDomainRequest) Descriptor() ([]byte, []int) {
+	return file_crude_crude_query_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *QueryAllUserEmailDomainRequest) GetPagination() *v1beta1.PageRequest {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
+func (x *QueryAllUserEmailDomainRequest) GetDomain() string {
+	if x != nil {
+		return x.Domain
+	}
+	return ""
+}
+
+type QueryAllUserEmailDomainResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	User []*User `protobuf:"bytes,1,rep,name=User,proto3" json:"User,omitempty"`
+}
+
+func (x *QueryAllUserEmailDomainResponse) Reset() {
+	*x = QueryAllUserEmailDomainResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_crude_crude_query_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryAllUserEmailDomainResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryAllUserEmailDomainResponse) ProtoMessage() {}
+
+// Deprecated: Use QueryAllUserEmailDomainResponse.ProtoReflect.Descriptor instead.
+func (*QueryAllUserEmailDomainResponse) Descriptor() ([]byte, []int) {
+	return file_crude_crude_query_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *QueryAllUserEmailDomainResponse) GetUser() []*User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 var File_crude_crude_query_proto protoreflect.FileDescriptor
 
 var file_crude_crude_query_proto_rawDesc = []byte{
@@ -4006,45 +5077,67 @@ var file_crude_crude_query_proto_rawDesc = []byte{
 	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x55, 0x73, 0x65,
 	0x72, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e,
 	0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00,
-	0x52, 0x04, 0x55, 0x73, 0x65, 0x72, 0x32, 0xcc, 0x03, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x12, 0x68, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x1f, 0x2e, 0x63, 0x72, 0x75,
-	0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61,
-	0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x63, 0x72,
-	0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1b, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x15, 0x12, 0x13, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72,
-	0x75, 0x64, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x6b, 0x0a, 0x04, 0x55, 0x73,
-	0x65, 0x72, 0x12, 0x20, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65,
-	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75,
-	0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12,
-	0x16, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x75, 0x73,
-	0x65, 0x72, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x69, 0x0a, 0x07, 0x55, 0x73, 0x65, 0x72, 0x41,
-	0x6c, 0x6c, 0x12, 0x20, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65,
-	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75,
-	0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x13, 0x12,
-	0x11, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x75, 0x73,
-	0x65, 0x72, 0x12, 0x80, 0x01, 0x0a, 0x10, 0x55, 0x73, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x42, 0x79,
-	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x27, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e,
+	0x52, 0x04, 0x55, 0x73, 0x65, 0x72, 0x22, 0x80, 0x01, 0x0a, 0x1e, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x44, 0x6f, 0x6d, 0x61,
+	0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67,
+	0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72,
+	0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0x4e, 0x0a, 0x1f, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x44, 0x6f,
+	0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2b, 0x0a, 0x04,
+	0x55, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x72, 0x75,
+	0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x04, 0xc8,
+	0xde, 0x1f, 0x00, 0x52, 0x04, 0x55, 0x73, 0x65, 0x72, 0x32, 0xdb, 0x04, 0x0a, 0x05, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x12, 0x68, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x1f, 0x2e,
+	0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20,
+	0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x1b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x15, 0x12, 0x13, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65,
+	0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x6b, 0x0a,
+	0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72,
+	0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e,
+	0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x55, 0x73,
+	0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x18, 0x12, 0x16, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65,
+	0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x69, 0x0a, 0x07, 0x55, 0x73,
+	0x65, 0x72, 0x41, 0x6c, 0x6c, 0x12, 0x20, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72,
+	0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e,
 	0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73,
-	0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x28, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51,
-	0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65,
-	0x73, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3, 0xe4, 0x93,
+	0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3, 0xe4, 0x93,
 	0x02, 0x13, 0x12, 0x11, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65,
-	0x2f, 0x75, 0x73, 0x65, 0x72, 0x42, 0x88, 0x01, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x72,
-	0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x73,
-	0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f,
-	0x63, 0x72, 0x75, 0x64, 0x65, 0xa2, 0x02, 0x03, 0x43, 0x43, 0x58, 0xaa, 0x02, 0x0b, 0x43, 0x72,
-	0x75, 0x64, 0x65, 0x2e, 0x43, 0x72, 0x75, 0x64, 0x65, 0xca, 0x02, 0x0b, 0x43, 0x72, 0x75, 0x64,
-	0x65, 0x5c, 0x43, 0x72, 0x75, 0x64, 0x65, 0xe2, 0x02, 0x17, 0x43, 0x72, 0x75, 0x64, 0x65, 0x5c,
-	0x43, 0x72, 0x75, 0x64, 0x65, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0xea, 0x02, 0x0c, 0x43, 0x72, 0x75, 0x64, 0x65, 0x3a, 0x3a, 0x43, 0x72, 0x75, 0x64, 0x65,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2f, 0x75, 0x73, 0x65, 0x72, 0x12, 0x80, 0x01, 0x0a, 0x10, 0x55, 0x73, 0x65, 0x72, 0x41, 0x6c,
+	0x6c, 0x42, 0x79, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x27, 0x2e, 0x63, 0x72, 0x75,
+	0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c,
+	0x6c, 0x55, 0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64,
+	0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x41, 0x64,
+	0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x13, 0x12, 0x11, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72,
+	0x75, 0x64, 0x65, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x12, 0x8c, 0x01, 0x0a, 0x14, 0x55, 0x73, 0x65,
+	0x72, 0x41, 0x6c, 0x6c, 0x42, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x44, 0x6f, 0x6d, 0x61, 0x69,
+	0x6e, 0x12, 0x2b, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6d, 0x61, 0x69,
+	0x6c, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2c,
+	0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x44, 0x6f,
+	0x6d, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x13, 0x12, 0x11, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0x2f, 0x63, 0x72, 0x75,
+	0x64, 0x65, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x42, 0x88, 0x01, 0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e,
+	0x63, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x63, 0x72, 0x75, 0x64, 0x65, 0x42, 0x0a, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x63, 0x6f, 0x73, 0x6d, 0x6f,
+	0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x72, 0x75, 0x64,
+	0x65, 0x2f, 0x63, 0x72, 0x75, 0x64, 0x65, 0xa2, 0x02, 0x03, 0x43, 0x43, 0x58, 0xaa, 0x02, 0x0b,
+	0x43, 0x72, 0x75, 0x64, 0x65, 0x2e, 0x43, 0x72, 0x75, 0x64, 0x65, 0xca, 0x02, 0x0b, 0x43, 0x72,
+	0x75, 0x64, 0x65, 0x5c, 0x43, 0x72, 0x75, 0x64, 0x65, 0xe2, 0x02, 0x17, 0x43, 0x72, 0x75, 0x64,
+	0x65, 0x5c, 0x43, 0x72, 0x75, 0x64, 0x65, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0xea, 0x02, 0x0c, 0x43, 0x72, 0x75, 0x64, 0x65, 0x3a, 0x3a, 0x43, 0x72, 0x75,
+	0x64, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4059,42 +5152,48 @@ func file_crude_crude_query_proto_rawDescGZIP() []byte {
 	return file_crude_crude_query_proto_rawDescData
 }
 
-var file_crude_crude_query_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_crude_crude_query_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_crude_crude_query_proto_goTypes = []interface{}{
-	(*QueryParamsRequest)(nil),          // 0: crude.crude.QueryParamsRequest
-	(*QueryParamsResponse)(nil),         // 1: crude.crude.QueryParamsResponse
-	(*QueryGetUserRequest)(nil),         // 2: crude.crude.QueryGetUserRequest
-	(*QueryGetUserResponse)(nil),        // 3: crude.crude.QueryGetUserResponse
-	(*QueryAllUserRequest)(nil),         // 4: crude.crude.QueryAllUserRequest
-	(*QueryAllUserAddressRequest)(nil),  // 5: crude.crude.QueryAllUserAddressRequest
-	(*QueryAllUserResponse)(nil),        // 6: crude.crude.QueryAllUserResponse
-	(*QueryAllUserAddressResponse)(nil), // 7: crude.crude.QueryAllUserAddressResponse
-	(*Params)(nil),                      // 8: crude.crude.Params
-	(*User)(nil),                        // 9: crude.crude.User
-	(*v1beta1.PageRequest)(nil),         // 10: cosmos.base.query.v1beta1.PageRequest
-	(*v1beta1.PageResponse)(nil),        // 11: cosmos.base.query.v1beta1.PageResponse
+	(*QueryParamsRequest)(nil),              // 0: crude.crude.QueryParamsRequest
+	(*QueryParamsResponse)(nil),             // 1: crude.crude.QueryParamsResponse
+	(*QueryGetUserRequest)(nil),             // 2: crude.crude.QueryGetUserRequest
+	(*QueryGetUserResponse)(nil),            // 3: crude.crude.QueryGetUserResponse
+	(*QueryAllUserRequest)(nil),             // 4: crude.crude.QueryAllUserRequest
+	(*QueryAllUserAddressRequest)(nil),      // 5: crude.crude.QueryAllUserAddressRequest
+	(*QueryAllUserResponse)(nil),            // 6: crude.crude.QueryAllUserResponse
+	(*QueryAllUserAddressResponse)(nil),     // 7: crude.crude.QueryAllUserAddressResponse
+	(*QueryAllUserEmailDomainRequest)(nil),  // 8: crude.crude.QueryAllUserEmailDomainRequest
+	(*QueryAllUserEmailDomainResponse)(nil), // 9: crude.crude.QueryAllUserEmailDomainResponse
+	(*Params)(nil),                          // 10: crude.crude.Params
+	(*User)(nil),                            // 11: crude.crude.User
+	(*v1beta1.PageRequest)(nil),             // 12: cosmos.base.query.v1beta1.PageRequest
+	(*v1beta1.PageResponse)(nil),            // 13: cosmos.base.query.v1beta1.PageResponse
 }
 var file_crude_crude_query_proto_depIdxs = []int32{
-	8,  // 0: crude.crude.QueryParamsResponse.params:type_name -> crude.crude.Params
-	9,  // 1: crude.crude.QueryGetUserResponse.User:type_name -> crude.crude.User
-	10, // 2: crude.crude.QueryAllUserRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
-	10, // 3: crude.crude.QueryAllUserAddressRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
-	9,  // 4: crude.crude.QueryAllUserResponse.User:type_name -> crude.crude.User
-	11, // 5: crude.crude.QueryAllUserResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
-	9,  // 6: crude.crude.QueryAllUserAddressResponse.User:type_name -> crude.crude.User
-	0,  // 7: crude.crude.Query.Params:input_type -> crude.crude.QueryParamsRequest
-	2,  // 8: crude.crude.Query.User:input_type -> crude.crude.QueryGetUserRequest
-	4,  // 9: crude.crude.Query.UserAll:input_type -> crude.crude.QueryAllUserRequest
-	5,  // 10: crude.crude.Query.UserAllByAddress:input_type -> crude.crude.QueryAllUserAddressRequest
-	1,  // 11: crude.crude.Query.Params:output_type -> crude.crude.QueryParamsResponse
-	3,  // 12: crude.crude.Query.User:output_type -> crude.crude.QueryGetUserResponse
-	6,  // 13: crude.crude.Query.UserAll:output_type -> crude.crude.QueryAllUserResponse
-	7,  // 14: crude.crude.Query.UserAllByAddress:output_type -> crude.crude.QueryAllUserAddressResponse
-	11, // [11:15] is the sub-list for method output_type
-	7,  // [7:11] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	10, // 0: crude.crude.QueryParamsResponse.params:type_name -> crude.crude.Params
+	11, // 1: crude.crude.QueryGetUserResponse.User:type_name -> crude.crude.User
+	12, // 2: crude.crude.QueryAllUserRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	12, // 3: crude.crude.QueryAllUserAddressRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	11, // 4: crude.crude.QueryAllUserResponse.User:type_name -> crude.crude.User
+	13, // 5: crude.crude.QueryAllUserResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
+	11, // 6: crude.crude.QueryAllUserAddressResponse.User:type_name -> crude.crude.User
+	12, // 7: crude.crude.QueryAllUserEmailDomainRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	11, // 8: crude.crude.QueryAllUserEmailDomainResponse.User:type_name -> crude.crude.User
+	0,  // 9: crude.crude.Query.Params:input_type -> crude.crude.QueryParamsRequest
+	2,  // 10: crude.crude.Query.User:input_type -> crude.crude.QueryGetUserRequest
+	4,  // 11: crude.crude.Query.UserAll:input_type -> crude.crude.QueryAllUserRequest
+	5,  // 12: crude.crude.Query.UserAllByAddress:input_type -> crude.crude.QueryAllUserAddressRequest
+	8,  // 13: crude.crude.Query.UserAllByEmailDomain:input_type -> crude.crude.QueryAllUserEmailDomainRequest
+	1,  // 14: crude.crude.Query.Params:output_type -> crude.crude.QueryParamsResponse
+	3,  // 15: crude.crude.Query.User:output_type -> crude.crude.QueryGetUserResponse
+	6,  // 16: crude.crude.Query.UserAll:output_type -> crude.crude.QueryAllUserResponse
+	7,  // 17: crude.crude.Query.UserAllByAddress:output_type -> crude.crude.QueryAllUserAddressResponse
+	9,  // 18: crude.crude.Query.UserAllByEmailDomain:output_type -> crude.crude.QueryAllUserEmailDomainResponse
+	14, // [14:19] is the sub-list for method output_type
+	9,  // [9:14] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_crude_crude_query_proto_init() }
@@ -4201,6 +5300,30 @@ func file_crude_crude_query_proto_init() {
 				return nil
 			}
 		}
+		file_crude_crude_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryAllUserEmailDomainRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_crude_crude_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryAllUserEmailDomainResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -4208,7 +5331,7 @@ func file_crude_crude_query_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_crude_crude_query_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

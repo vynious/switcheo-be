@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName           = "/crude.crude.Query/Params"
-	Query_User_FullMethodName             = "/crude.crude.Query/User"
-	Query_UserAll_FullMethodName          = "/crude.crude.Query/UserAll"
-	Query_UserAllByAddress_FullMethodName = "/crude.crude.Query/UserAllByAddress"
+	Query_Params_FullMethodName               = "/crude.crude.Query/Params"
+	Query_User_FullMethodName                 = "/crude.crude.Query/User"
+	Query_UserAll_FullMethodName              = "/crude.crude.Query/UserAll"
+	Query_UserAllByAddress_FullMethodName     = "/crude.crude.Query/UserAllByAddress"
+	Query_UserAllByEmailDomain_FullMethodName = "/crude.crude.Query/UserAllByEmailDomain"
 )
 
 // QueryClient is the client API for Query service.
@@ -35,6 +36,7 @@ type QueryClient interface {
 	User(ctx context.Context, in *QueryGetUserRequest, opts ...grpc.CallOption) (*QueryGetUserResponse, error)
 	UserAll(ctx context.Context, in *QueryAllUserRequest, opts ...grpc.CallOption) (*QueryAllUserResponse, error)
 	UserAllByAddress(ctx context.Context, in *QueryAllUserAddressRequest, opts ...grpc.CallOption) (*QueryAllUserAddressResponse, error)
+	UserAllByEmailDomain(ctx context.Context, in *QueryAllUserEmailDomainRequest, opts ...grpc.CallOption) (*QueryAllUserEmailDomainResponse, error)
 }
 
 type queryClient struct {
@@ -81,6 +83,15 @@ func (c *queryClient) UserAllByAddress(ctx context.Context, in *QueryAllUserAddr
 	return out, nil
 }
 
+func (c *queryClient) UserAllByEmailDomain(ctx context.Context, in *QueryAllUserEmailDomainRequest, opts ...grpc.CallOption) (*QueryAllUserEmailDomainResponse, error) {
+	out := new(QueryAllUserEmailDomainResponse)
+	err := c.cc.Invoke(ctx, Query_UserAllByEmailDomain_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -91,6 +102,7 @@ type QueryServer interface {
 	User(context.Context, *QueryGetUserRequest) (*QueryGetUserResponse, error)
 	UserAll(context.Context, *QueryAllUserRequest) (*QueryAllUserResponse, error)
 	UserAllByAddress(context.Context, *QueryAllUserAddressRequest) (*QueryAllUserAddressResponse, error)
+	UserAllByEmailDomain(context.Context, *QueryAllUserEmailDomainRequest) (*QueryAllUserEmailDomainResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -109,6 +121,9 @@ func (UnimplementedQueryServer) UserAll(context.Context, *QueryAllUserRequest) (
 }
 func (UnimplementedQueryServer) UserAllByAddress(context.Context, *QueryAllUserAddressRequest) (*QueryAllUserAddressResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserAllByAddress not implemented")
+}
+func (UnimplementedQueryServer) UserAllByEmailDomain(context.Context, *QueryAllUserEmailDomainRequest) (*QueryAllUserEmailDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserAllByEmailDomain not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -195,6 +210,24 @@ func _Query_UserAllByAddress_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_UserAllByEmailDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllUserEmailDomainRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).UserAllByEmailDomain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_UserAllByEmailDomain_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).UserAllByEmailDomain(ctx, req.(*QueryAllUserEmailDomainRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -217,6 +250,10 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UserAllByAddress",
 			Handler:    _Query_UserAllByAddress_Handler,
+		},
+		{
+			MethodName: "UserAllByEmailDomain",
+			Handler:    _Query_UserAllByEmailDomain_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

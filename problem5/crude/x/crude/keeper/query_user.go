@@ -3,6 +3,7 @@ package keeper
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"cosmossdk.io/store/prefix"
 	"crude/x/crude/types"
@@ -79,4 +80,30 @@ func (k Keeper) UserAllByAddress(ctx context.Context, req *types.QueryAllUserAdd
 	}
 	fmt.Println("retrieving all users")
 	return &types.QueryAllUserAddressResponse{User: users}, nil
+}
+
+func (k Keeper) UserAllByEmailDomain(ctx context.Context, req *types.QueryAllUserEmailDomainRequest) (*types.QueryAllUserEmailDomainResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+	store := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
+	userStore := prefix.NewStore(store, types.KeyPrefix(types.UserKey))
+	domain := req.Domain
+	var users []types.User
+
+	_, err := query.Paginate(userStore, req.Pagination, func(key []byte, value []byte) error {
+		var user types.User
+		if err := k.cdc.Unmarshal(value, &user); err != nil {
+			return err
+		}
+		if strings.Contains(user.Email, domain) {
+			users = append(users, user)
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+	fmt.Println("retrieving all users")
+	return &types.QueryAllUserEmailDomainResponse{User: users}, nil
 }
