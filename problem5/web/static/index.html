@@ -17,7 +17,7 @@
         text-align: center;
         color: #333;
     }
-    form, #user-details, #all-users,#create-user, #update-user, #update-user-password, #all-users-by-address, #del-user-details, #all-users-by-email-domain {
+    .form-container {
         margin: 20px auto;
         width: 80%;
         padding: 20px;
@@ -47,116 +47,105 @@
     button:hover {
         background: #0056b3;
     }
-    #user-details, #all-users, #create-user, #update-user, #update-user-password, #all-users-by-address, #del-user-details, #all-users-by-email-domain  {
+    .output {
         max-width: 100%;
-        overflow-x: auto; /* Allows horizontal scrolling if content is too wide */
+        overflow-x: auto;
         padding: 10px;
-        border: 1px solid #ddd; /* Optional: adds a border for clarity */
+        border: 1px solid #ddd;
     }
 </style>
 
 <body>
 <h1>Cosmos SDK User Management</h1>
 
-<!-- Form to Create User -->
-<form hx-post="/create-user" hx-encoding="json" hx-target="#create-user">
-    <h3>Function to Create User</h3>
-    <input type="text" name="name" placeholder="Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="text" name="address" placeholder="Address">
-    <button type="submit">Create User</button>
-</form>
-
-<div id="create-user">
-    <p>Output: </p>
+<div id="create-user" class="form-container">
+    <form hx-post="/create-user" hx-encoding="json" hx-target="#create-user-output">
+        <h3>Create User</h3>
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="text" name="address" placeholder="Address">
+        <button type="submit">Create User</button>
+    </form>
+    <br>
+    <div id="create-user-output" class="output"><p>Output: </p></div>
 </div>
 
-<!-- Form to Update User -->
-<form hx-post="/update-user" hx-encoding="json" hx-target="#update-user">
-    <h3>Function to Update Specific User</h3>
-    <input type="number" name="id" placeholder="User ID">
-    <input type="text" name="name" placeholder="Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="text" name="username" placeholder="Username">
-    <input type="text" name="address" placeholder="Address">
-    <button type="submit">Update User</button>
-</form>
-
-<div id="update-user">
-    <p>Output: </p>
+<div id="update-user" class="form-container">
+    <form hx-post="/update-user" hx-encoding="json" hx-target="#update-user-output">
+        <h3>Update User</h3>
+        <input type="number" name="id" placeholder="User ID">
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="address" placeholder="Address">
+        <button type="submit">Update User</button>
+    </form>
+    <br>
+    <div id="update-user-output" class="output"><p>Output: </p></div>
 </div>
 
-<!-- Form to Update User Password -->
-<form hx-post="/update-user-password" hx-encoding="json" hx-target="#update-user-password">
-    <h3>Function to Update Specific User's Password</h3>
-    <input type="number" name="id" placeholder="User ID">
-    <input type="password" name="currentPassword" placeholder="Current Password">
-    <input type="password" name="newPassword" placeholder="New Password">
-    <button type="submit">Update Password</button>
-</form>
-
-<div id="update-user-password">
-    <p>Output: </p>
+<div id="update-user-password" class="form-container">
+    <form hx-post="/update-user-password" hx-encoding="json" hx-target="#update-user-password-output">
+        <h3>Update User Password</h3>
+        <input type="number" name="id" placeholder="User ID">
+        <input type="password" name="currentPassword" placeholder="Current Password">
+        <input type="password" name="newPassword" placeholder="New Password">
+        <button type="submit">Update Password</button>
+    </form>
+    <br>
+    <div id="update-user-password-output" class="output"><p>Output: </p></div>
 </div>
 
-
-<!-- Form to Get User by ID -->
-<form hx-get="/get-user" hx-target="#user-details">
-    <h3>Function to Get Specific User</h3>
-    <input type="number" name="id" placeholder="User ID">
-    <button type="submit">Get User</button>
-</form>
-
-<!-- Div to Show User Details -->
-<div id="user-details">
-    <p>Output: </p>
+<div id="get-user" class="form-container">
+    <form hx-get="/get-user" hx-target="#get-user-output">
+        <h3>Get Specific User</h3>
+        <input type="number" name="id" placeholder="User ID">
+        <button type="submit">Get User</button>
+    </form>
+    <br>
+    <div id="get-user-output" class="output"><p>Output: </p></div>
 </div>
 
-<!-- Button to Get All Users -->
-<form hx-get="/get-all-users" hx-target="#all-users">
-    <h3>Function to Get All User</h3>
-    <button type="submit">Get All User</button>
-</form>
-
-<!-- Div to Show All Users -->
-<div id="all-users">
-    <p>Output: </p>
+<div id="get-all-users" class="form-container">
+    <form hx-get="/get-all-users" hx-target="#get-all-users-output">
+        <h3>Get All Users</h3>
+        <button type="submit">Get All Users</button>
+    </form>
+    <br>
+    <div id="get-all-users-output" class="output"><p>Output: </p></div>
 </div>
 
-<form hx-get="/get-all-users-by-address" hx-target="#all-users-by-address">
-    <h3>Function to Get All Users By Address</h3>
-    <input type="text" name="address" placeholder="Address">
-    <button type="submit">Get All User By Address</button>
-</form>
-
-<!-- Div to Show All Users -->
-<div id="all-users-by-address">
-    <p>Output: </p>
+<div id="get-all-users-by-address" class="form-container">
+    <form hx-get="/get-all-users-by-address" hx-target="#get-all-users-by-address-output">
+        <h3>Get All Users By Address</h3>
+        <input type="text" name="address" placeholder="Address">
+        <button type="submit">Get All Users By Address</button>
+    </form>
+    <br>
+    <div id="get-all-users-by-address-output" class="output"><p>Output: </p></div>
 </div>
 
-<form hx-get="/get-all-users-by-email-domain" hx-target="#all-users-by-email-domain">
-    <h3>Function to Get All Users By Email Domain</h3>
-    <input type="text" name="domain" placeholder="Domain">
-    <button type="submit">Get All User By Email Domain</button>
-</form>
-
-<!-- Div to Show All Users -->
-<div id="all-users-by-email-domain">
-    <p>Output: </p>
+<div id="get-all-users-by-email-domain" class="form-container">
+    <form hx-get="/get-all-users-by-email-domain" hx-target="#get-all-users-by-email-domain-output">
+        <h3>Get All Users By Email Domain</h3>
+        <input type="text" name="domain" placeholder="Domain">
+        <button type="submit">Get All Users By Email Domain</button>
+    </form>
+    <br>
+    <div id="get-all-users-by-email-domain-output" class="output"><p>Output: </p></div>
 </div>
 
-<!-- Form to Get User by ID -->
-<form hx-post="/delete-user" hx-target="#del-user-details">
-    <h3>Function to Get Delete User</h3>
-    <input type="number" name="id" placeholder="User ID">
-    <button type="submit">Delete User</button>
-</form>
-
-<!-- Div to Show User Details -->
-<div id="del-user-details">
-    <p>Output: </p>
+<div id="delete-user" class="form-container">
+    <form hx-post="/delete-user" hx-target="#delete-user-output">
+        <h3>Delete User</h3>
+        <input type="number" name="id" placeholder="User ID">
+        <button type="submit">Delete User</button>
+    </form>
+    <br>
+    <div id="delete-user-output" class="output"><p>Output: </p></div>
 </div>
+
 </body>
 </html>

@@ -1,30 +1,17 @@
 ## _Getting started:_
 
-### Start the blockchain
-
-1. Enter `crude` folder
-2. Run `ignite chain serve`
+- Refer to `README.md` in `main` branch
 
 
-### Start the client
+## Consensus Breaking Change
 
-1. Enter `web` folder
-2. Run `go run main.go`
-3. Open the web client
+### Description of the Change
 
+*   **Change**: Addition of an `age` field (type: integer) to the `User` data structure.
+*   **Reason for Change**: To include the age of users as part of their profile information in the blockchain.
 
-## _Resource:_ 
+### Impact of the Change
 
-### User
-
-- User Schema: `id`, `name`, `email`, `username`, `password`, `address`
-
-### User Management 
-
-
-- Create User Function
-- Update User Detail Function (excluding password)
-- Update User Password Function 
-- Get Specific User by ID Function
-- Get All User Function
-- Get All User by Address Function
+*   **Consensus-Breaking**: This change is consensus-breaking, meaning it will alter the way transactions are validated across the network.
+*   **Validation Rules Change**: Existing nodes will reject transactions that include the new `age` field, as they are not aware of this new structure.
+*   **Potential for Blockchain Fork**: If some nodes in the network adopt this change while others do not, it could lead to a fork in the blockchain. One version will have blocks with the `age` field, while the other will not.
