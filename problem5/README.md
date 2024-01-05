@@ -28,3 +28,4 @@
 - Get Specific User by ID Function
 - Get All User Function
 - Get All User by Address Function
+- Get All User by Email Domain
